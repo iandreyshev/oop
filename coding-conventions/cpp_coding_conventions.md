@@ -108,6 +108,18 @@ void CallAddWords()
 
 ![Dont Indent Namespace](/uploads/desktop-public/dont-indent-namespace.png "Dont Indent Namespace")
 
+* [SF.7: Не пишите `using namespace` в глобальной области видимости заголовочного файла](https://isocpp.github.io/CppCoreGuidelines/CppCoreGuidelines#sf7-dont-write-using-namespace-at-global-scope-in-a-header-file). Это загрязняет пространство имён для всех, кто подключает заголовочный файл, и может вызвать неожиданные конфликты имён.
+
+```cpp
+// плохо (в заголовочном файле)
+using namespace std;
+
+string Greet(const string& name); // засоряет глобальное пространство имён
+
+// хорошо (в заголовочном файле)
+std::string Greet(const std::string& name);
+```
+
 # Выражения и инструкции
 
 
